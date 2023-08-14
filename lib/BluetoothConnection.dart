@@ -42,7 +42,7 @@ class BluetoothConnection {
       : this._id = id,
         this._readChannel =
             EventChannel('${FlutterBluetoothSerial.namespace}/read/$id') {
-    _readStreamController = StreamController<Uint8List>();
+    _readStreamController = StreamController<Uint8List>.broadcast();
 
     _readStreamSubscription =
         _readChannel.receiveBroadcastStream().cast<Uint8List>().listen(
